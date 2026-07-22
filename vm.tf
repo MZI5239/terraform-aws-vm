@@ -14,6 +14,7 @@ resource "aws_instance" "main" {
   key_name               = aws_key_pair.main.key_name
   vpc_security_group_ids = [aws_security_group.main.id]
   user_data              = file("${path.module}/cloud-init.yaml")
+  disable_api_termination  = true
 
   tags = {
     Name = "${var.app_name}-vm"
